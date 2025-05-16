@@ -49,6 +49,7 @@ class MFCDProcessor:
             images = [images]
         if isinstance(text, str):
             text = [text]
+        # apply high-pass-filter and low-pass-filter to images
         with torch.no_grad():
             high_pass_images = [
                 self.high_pass_filter(

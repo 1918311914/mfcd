@@ -7,7 +7,9 @@ from processor import MFCDProcessor
 
 
 def main():
+    # pretrained model name or path
     model_name_or_path = "llava-hf/llava-1.5-7b-hf"
+    # device to use
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     processor = MFCDProcessor.from_pretrained(
@@ -54,6 +56,7 @@ def main():
 
     inputs = inputs.to(device=model.device, dtype=model.dtype)
 
+    # mfc_low_alpha or mfc_high_alpha or mfc_beta will trigger mfcd method
     generation_config = GenerationConfig(
         temperature=1.2,
         do_sample=True,
